@@ -347,12 +347,13 @@ def load_css():
     st.markdown(
         """
 <style>
-#MainMenu {visibility: hidden;}
-footer {visibility: hidden;}
-header {visibility: hidden;}
-[data-testid="stSidebar"] {display: none;}
-[data-testid="stToolbar"] {display: none;}
-[data-testid="stDecoration"] {display: none;}
+/* HAPUS SEMUA HEADER DAN RUANG KOSONG BAWAAN STREAMLIT */
+header[data-testid="stHeader"] {display: none !important;}
+#MainMenu {display: none !important;}
+footer {display: none !important;}
+[data-testid="stSidebar"] {display: none !important;}
+[data-testid="stToolbar"] {display: none !important;}
+[data-testid="stDecoration"] {display: none !important;}
 
 html, body, .stApp, [data-testid="stAppViewContainer"], [data-testid="stMainBlockContainer"], .main {
     overflow-x: hidden !important;
@@ -368,36 +369,10 @@ html, body, [class*="css"] {
     background: #eefaff !important;
 }
 
+/* Mengatur container agar mepet atas (menghapus space biru muda di mobile) */
 .block-container {
     max-width: 1080px !important;
-    padding: 16px !important;
-}
-
-/* HILANGKAN BORDER DEFAULT INPUT STREAMLIT */
-[data-baseweb="input"] {
-    border: none !important;
-    box-shadow: none !important;
-    background: transparent !important;
-}
-
-[data-baseweb="input"] > div {
-    border: none !important;
-    box-shadow: none !important;
-    background: transparent !important;
-}
-
-input {
-    outline: none !important;
-    box-shadow: none !important;
-}
-
-/* ICON MATA PASSWORD ADMIN */
-[data-testid="stTextInput"] svg {
-    color: #003366 !important;
-    fill: #003366 !important;
-    opacity: 1 !important;
-    width: 24px !important;
-    height: 24px !important;
+    padding: 1rem 16px 16px 16px !important;
 }
 
 /* ======================================================
@@ -770,103 +745,91 @@ input {
 }
 
 /* ======================================================
-   INPUT CHAT MODERN RESPONSIVE WITH FLEXBOX
+   INPUT CHAT MODERN RESPONSIVE - FIXED ALIGNMENT
 ====================================================== */
 .input-box {
     margin-top: 10px;
-    background: transparent;
     width: 100% !important;
-    max-width: 100% !important;
+    padding: 0 10px 15px 10px;
     box-sizing: border-box !important;
 }
 
 [data-testid="stForm"] {
     background: #ffffff !important;
-    border: none !important;
-    padding: 6px 10px !important;
+    border: 1px solid #dcdcdc !important;
+    padding: 6px 8px 6px 18px !important; /* Mepet di kanan, ruang lega di kiri */
     border-radius: 999px !important;
-    box-shadow: 0 8px 22px rgba(0,0,0,.08) !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05) !important;
+    margin: 0 !important;
     width: 100% !important;
     box-sizing: border-box !important;
 }
 
-[data-testid="stForm"] div[data-testid="stHorizontalBlock"] {
+/* Memastikan Flexbox bekerja maksimal di semua device */
+[data-testid="stForm"] > div > div[data-testid="stHorizontalBlock"] {
     display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
     align-items: center !important;
     justify-content: space-between !important;
-    gap: 6px !important;
     width: 100% !important;
+    gap: 0 !important; /* Menghilangkan jarak bawaan kolom Streamlit */
 }
 
-[data-testid="stForm"] div[data-testid="column"]:first-child {
+/* Kolom Kiri: Tempat Teks Input (Elastis/Melar) */
+[data-testid="stForm"] div[data-testid="column"]:nth-child(1) {
     flex: 1 1 auto !important;
+    width: 100% !important;
     min-width: 0 !important;
     padding: 0 !important;
     margin: 0 !important;
 }
 
-[data-testid="stForm"] div[data-testid="column"]:last-child {
-    flex: 0 0 44px !important;
-    min-width: 44px !important;
-    max-width: 44px !important;
+/* Kolom Kanan: Tempat Tombol Panah (Dikunci/Fix) */
+[data-testid="stForm"] div[data-testid="column"]:nth-child(2) {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    min-width: 0 !important;
     padding: 0 !important;
     margin: 0 !important;
     display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-}
-
-.stTextInput > div {
-    border: none !important;
-    box-shadow: none !important;
-}
-
-.stTextInput > div > div {
-    border: none !important;
-    box-shadow: none !important;
-    background: transparent !important;
+    justify-content: flex-end !important;
 }
 
 .stTextInput > div > div > input {
-    height: 44px !important;
-    border-radius: 999px !important;
+    color: #333333 !important;
+    background-color: transparent !important;
     border: none !important;
-    background: #ffffff !important;
-    color: #111 !important;
-    padding-left: 14px !important;
-    font-size: 14px !important;
+    font-size: 15px !important;
+    height: 40px !important;
+    padding: 0 !important;
     box-shadow: none !important;
     width: 100% !important;
 }
 
 .stTextInput > div > div > input:focus {
+    outline: none !important;
     border: none !important;
     box-shadow: none !important;
 }
 
 .stTextInput > div > div > input::placeholder {
-    color: #9aa6b2 !important;
+    color: #888888 !important;
 }
 
 .stForm button {
-    height: 40px !important;
-    width: 40px !important;
-    min-width: 40px !important;
+    height: 42px !important;
+    width: 42px !important;
     border-radius: 50% !important;
     background: #0b4d95 !important;
-    color: #ffffff !important;
+    color: white !important;
     font-size: 18px !important;
-    font-weight: 900 !important;
-    box-shadow: none !important;
     border: none !important;
     padding: 0 !important;
-    line-height: 1 !important;
     margin: 0 !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
+    box-shadow: 0 4px 8px rgba(11,77,149,0.3) !important;
+    flex-shrink: 0 !important;
 }
 
 .stForm button:hover {
@@ -1034,15 +997,18 @@ div[data-testid="stTextInput"] input {
         width: 100% !important;
     }
 
+    /* MENGHILANGKAN SPACE BIRU MUDA DI ATAS KETIKA DI HP */
     .main .block-container {
         margin: 0 !important;
         padding: 0 !important;
         max-width: 100% !important;
         width: 100% !important;
+        padding-top: 0 !important; 
     }
 
     .stApp {
         background: #bfeaff !important;
+        margin-top: 0 !important;
     }
 
     .topbar {
@@ -1162,34 +1128,6 @@ div[data-testid="stTextInput"] input {
         background: #bfeaff;
         padding: 0 10px 12px 10px;
         margin-top: 0;
-    }
-
-    [data-testid="stForm"] {
-        padding: 6px 8px !important;
-        box-shadow: none !important;
-    }
-
-    [data-testid="stForm"] div[data-testid="column"]:first-child {
-        flex: 1 1 auto !important;
-    }
-
-    [data-testid="stForm"] div[data-testid="column"]:last-child {
-        flex: 0 0 42px !important;
-        max-width: 42px !important;
-        min-width: 42px !important;
-    }
-
-    .stTextInput > div > div > input {
-        height: 40px !important;
-        font-size: 13px !important;
-    }
-
-    .stForm button {
-        height: 38px !important;
-        width: 38px !important;
-        min-width: 38px !important;
-        font-size: 16px !important;
-        margin: 0 !important;
     }
 
     .splash-screen {
@@ -1370,7 +1308,8 @@ def render_user_page():
     st.markdown("<div class='input-box'>", unsafe_allow_html=True)
 
     with st.form("chat_form", clear_on_submit=True):
-        input_col, send_col = st.columns([10, 1])
+        # Penggunaan proporsi [8, 1] agar layout bawaan tidak memaksa elemen keluar jalur
+        input_col, send_col = st.columns([8, 1])
 
         with input_col:
             prompt = st.text_input(
