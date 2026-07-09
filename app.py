@@ -348,9 +348,9 @@ def load_css():
         """
 <style>
 /* HAPUS SEMUA HEADER DAN RUANG KOSONG BAWAAN STREAMLIT */
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
 header[data-testid="stHeader"] {display: none !important;}
-#MainMenu {display: none !important;}
-footer {display: none !important;}
 [data-testid="stSidebar"] {display: none !important;}
 [data-testid="stToolbar"] {display: none !important;}
 [data-testid="stDecoration"] {display: none !important;}
@@ -369,10 +369,10 @@ html, body, [class*="css"] {
     background: #eefaff !important;
 }
 
-/* Mengatur container agar mepet atas (menghapus space biru muda di mobile) */
+/* Mengatur container agar mepet atas (menghapus space biru muda di mobile & web) */
 .block-container {
     max-width: 1080px !important;
-    padding: 1rem 16px 16px 16px !important;
+    padding: 0px 16px 16px 16px !important;
 }
 
 /* ======================================================
@@ -745,91 +745,105 @@ html, body, [class*="css"] {
 }
 
 /* ======================================================
-   INPUT CHAT MODERN RESPONSIVE - FIXED ALIGNMENT
+   INPUT CHAT MODERN RESPONSIVE WITH FLEXBOX
 ====================================================== */
 .input-box {
     margin-top: 10px;
+    background: transparent;
     width: 100% !important;
-    padding: 0 10px 15px 10px;
+    max-width: 100% !important;
     box-sizing: border-box !important;
 }
 
 [data-testid="stForm"] {
     background: #ffffff !important;
-    border: 1px solid #dcdcdc !important;
-    padding: 6px 8px 6px 18px !important; /* Mepet di kanan, ruang lega di kiri */
+    border: 1px solid #e0e0e0 !important;
+    padding: 5px 6px 5px 15px !important; /* Padding kanan dibuat kecil agar tombol mepet */
     border-radius: 999px !important;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05) !important;
-    margin: 0 !important;
+    box-shadow: 0 8px 22px rgba(0,0,0,.05) !important;
     width: 100% !important;
     box-sizing: border-box !important;
 }
 
-/* Memastikan Flexbox bekerja maksimal di semua device */
-[data-testid="stForm"] > div > div[data-testid="stHorizontalBlock"] {
+[data-testid="stForm"] div[data-testid="stHorizontalBlock"] {
     display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
     align-items: center !important;
     justify-content: space-between !important;
+    gap: 0px !important;
     width: 100% !important;
-    gap: 0 !important; /* Menghilangkan jarak bawaan kolom Streamlit */
 }
 
-/* Kolom Kiri: Tempat Teks Input (Elastis/Melar) */
-[data-testid="stForm"] div[data-testid="column"]:nth-child(1) {
+/* Kolom Kiri: Input Teks */
+[data-testid="stForm"] div[data-testid="column"]:first-child {
     flex: 1 1 auto !important;
-    width: 100% !important;
     min-width: 0 !important;
     padding: 0 !important;
     margin: 0 !important;
 }
 
-/* Kolom Kanan: Tempat Tombol Panah (Dikunci/Fix) */
-[data-testid="stForm"] div[data-testid="column"]:nth-child(2) {
-    flex: 0 0 auto !important;
-    width: auto !important;
-    min-width: 0 !important;
+/* Kolom Kanan: Tombol Panah (Ukuran Fix, Mepet Kanan) */
+[data-testid="stForm"] div[data-testid="column"]:last-child {
+    flex: 0 0 42px !important; 
+    width: 42px !important;
+    min-width: 42px !important;
+    max-width: 42px !important;
     padding: 0 !important;
     margin: 0 !important;
     display: flex !important;
     justify-content: flex-end !important;
+    align-items: center !important;
+}
+
+/* Membersihkan Background Input Teks */
+.stTextInput,
+.stTextInput > div,
+.stTextInput > div > div {
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
 }
 
 .stTextInput > div > div > input {
-    color: #333333 !important;
-    background-color: transparent !important;
+    height: 42px !important;
+    border-radius: 999px !important;
     border: none !important;
-    font-size: 15px !important;
-    height: 40px !important;
+    background: transparent !important; 
+    color: #111 !important;
     padding: 0 !important;
+    font-size: 14px !important;
     box-shadow: none !important;
     width: 100% !important;
 }
 
 .stTextInput > div > div > input:focus {
-    outline: none !important;
     border: none !important;
     box-shadow: none !important;
+    background: transparent !important;
 }
 
 .stTextInput > div > div > input::placeholder {
-    color: #888888 !important;
+    color: #9aa6b2 !important;
 }
 
+/* Desain Tombol Panah */
 .stForm button {
-    height: 42px !important;
-    width: 42px !important;
+    height: 40px !important;
+    width: 40px !important;
+    min-width: 40px !important;
     border-radius: 50% !important;
     background: #0b4d95 !important;
-    color: white !important;
+    color: #ffffff !important;
     font-size: 18px !important;
+    font-weight: 900 !important;
+    box-shadow: none !important;
     border: none !important;
     padding: 0 !important;
     margin: 0 !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    box-shadow: 0 4px 8px rgba(11,77,149,0.3) !important;
-    flex-shrink: 0 !important;
 }
 
 .stForm button:hover {
@@ -1124,10 +1138,38 @@ div[data-testid="stTextInput"] input {
         width: 26px !important;
     }
 
+    /* Penyesuaian form input khusus mobile */
     .input-box {
         background: #bfeaff;
         padding: 0 10px 12px 10px;
         margin-top: 0;
+    }
+
+    [data-testid="stForm"] {
+        padding: 6px 6px 6px 12px !important;
+    }
+
+    [data-testid="stForm"] div[data-testid="column"]:first-child {
+        flex: 1 1 auto !important;
+    }
+
+    [data-testid="stForm"] div[data-testid="column"]:last-child {
+        flex: 0 0 38px !important;
+        max-width: 38px !important;
+        min-width: 38px !important;
+    }
+
+    .stTextInput > div > div > input {
+        height: 38px !important;
+        font-size: 13px !important;
+    }
+
+    .stForm button {
+        height: 36px !important;
+        width: 36px !important;
+        min-width: 36px !important;
+        font-size: 16px !important;
+        margin: 0 !important;
     }
 
     .splash-screen {
@@ -1308,8 +1350,7 @@ def render_user_page():
     st.markdown("<div class='input-box'>", unsafe_allow_html=True)
 
     with st.form("chat_form", clear_on_submit=True):
-        # Penggunaan proporsi [8, 1] agar layout bawaan tidak memaksa elemen keluar jalur
-        input_col, send_col = st.columns([8, 1])
+        input_col, send_col = st.columns([10, 1])
 
         with input_col:
             prompt = st.text_input(
