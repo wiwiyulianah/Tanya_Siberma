@@ -36,7 +36,7 @@ INDEX_DIR.mkdir(parents=True, exist_ok=True)
 # =========================================================
 # SESSION
 # =========================================================
-APP_VERSION = "tanya-siberma-clean-input-admin-v71"
+APP_VERSION = "tanya-siberma-clean-input-admin-v70"
 
 if st.session_state.get("_app_version") != APP_VERSION:
     st.session_state.clear()
@@ -339,7 +339,7 @@ def answer_pending_question():
     st.session_state.last_sources = sources
     st.session_state.pending_question = None
     st.rerun()
-
+    
 # =========================================================
 # CSS
 # =========================================================
@@ -347,7 +347,7 @@ def load_css():
     st.markdown(
         """
 <style>
-/* HAPUS SEMUA HEADER DAN RUANG KOSONG BAWAAN STREAMLIT (Sesuai Kriteria 2) */
+/* HAPUS SEMUA HEADER DAN RUANG KOSONG BAWAAN STREAMLIT */
 #MainMenu {visibility: hidden;}
 footer {visibility: hidden;}
 header[data-testid="stHeader"] {display: none !important;}
@@ -372,7 +372,7 @@ html, body, [class*="css"] {
 /* Mengatur container agar mepet atas (menghapus space biru muda di mobile & web) */
 .block-container {
     max-width: 1080px !important;
-    padding: 0px 16px 16px 16px !important; /* Spasi atas 0px */
+    padding: 0px 16px 16px 16px !important;
 }
 
 /* ======================================================
@@ -745,7 +745,7 @@ html, body, [class*="css"] {
 }
 
 /* ======================================================
-   INPUT CHAT MODERN RESPONSIVE WITH FLEXBOX (Sesuai Kriteria 3 & 4)
+   INPUT CHAT MODERN RESPONSIVE WITH FLEXBOX
 ====================================================== */
 .input-box {
     margin-top: 10px;
@@ -755,31 +755,29 @@ html, body, [class*="css"] {
     box-sizing: border-box !important;
 }
 
-/* Kotak putih luar form */
 [data-testid="stForm"] {
     background: #ffffff !important;
     border: 1px solid #e0e0e0 !important;
-    padding: 5px 6px 5px 15px !important; /* Mencegah tombol keluar garis (Kriteria 4) */
+    padding: 5px 6px 5px 15px !important; /* Padding kanan dibuat kecil agar tombol mepet */
     border-radius: 999px !important;
     box-shadow: 0 8px 22px rgba(0,0,0,.05) !important;
     width: 100% !important;
     box-sizing: border-box !important;
 }
 
-/* Flexbox untuk menghilangkan gap dan menata letak */
 [data-testid="stForm"] div[data-testid="stHorizontalBlock"] {
     display: flex !important;
     flex-direction: row !important;
     flex-wrap: nowrap !important;
     align-items: center !important;
     justify-content: space-between !important;
-    gap: 0px !important; /* Menghilangkan gap bawaan (Kriteria 3) */
+    gap: 0px !important;
     width: 100% !important;
 }
 
-/* Kolom Kiri: Input Teks (Dibuat auto stretch) */
+/* Kolom Kiri: Input Teks */
 [data-testid="stForm"] div[data-testid="column"]:first-child {
-    flex: 1 1 auto !important; /* (Kriteria 3) */
+    flex: 1 1 auto !important;
     min-width: 0 !important;
     padding: 0 !important;
     margin: 0 !important;
@@ -787,22 +785,31 @@ html, body, [class*="css"] {
 
 /* Kolom Kanan: Tombol Panah (Ukuran Fix, Mepet Kanan) */
 [data-testid="stForm"] div[data-testid="column"]:last-child {
-    flex: 0 0 42px !important; /* (Kriteria 3) */
-    max-width: 42px !important; /* (Kriteria 3) */
+    flex: 0 0 42px !important; 
+    width: 42px !important;
     min-width: 42px !important;
+    max-width: 42px !important;
     padding: 0 !important;
     margin: 0 !important;
     display: flex !important;
-    justify-content: flex-end !important; /* Mepet Kanan */
+    justify-content: flex-end !important;
     align-items: center !important;
 }
 
-/* Input teks Streamlit dibersihkan agar putih murni */
+/* Membersihkan Background Input Teks */
+.stTextInput,
+.stTextInput > div,
+.stTextInput > div > div {
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+}
+
 .stTextInput > div > div > input {
     height: 42px !important;
     border-radius: 999px !important;
     border: none !important;
-    background: transparent !important;
+    background: transparent !important; 
     color: #111 !important;
     padding: 0 !important;
     font-size: 14px !important;
@@ -995,7 +1002,7 @@ div[data-testid="stTextInput"] input {
     margin-top: 10px;
 }
 
-/* MOBILE RESPONSIVE FIXES (Sesuai Kriteria 1) */
+/* MOBILE RESPONSIVE FIXES */
 @media (max-width: 768px) {
     html, body, .stApp, [data-testid="stAppViewContainer"], [data-testid="stMainBlockContainer"], .main {
         margin: 0 !important;
@@ -1007,13 +1014,15 @@ div[data-testid="stTextInput"] input {
     /* MENGHILANGKAN SPACE BIRU MUDA DI ATAS KETIKA DI HP */
     .main .block-container {
         margin: 0 !important;
-        padding: 0px 10px 10px 10px !important; /* Padding atas wajib 0px agar nempel ke atas */
+        padding: 0 !important;
         max-width: 100% !important;
         width: 100% !important;
+        padding-top: 0 !important; 
     }
 
     .stApp {
         background: #bfeaff !important;
+        margin-top: 0 !important;
     }
 
     .topbar {
@@ -1129,15 +1138,19 @@ div[data-testid="stTextInput"] input {
         width: 26px !important;
     }
 
+    /* Penyesuaian form input khusus mobile */
     .input-box {
         background: #bfeaff;
         padding: 0 10px 12px 10px;
         margin-top: 0;
     }
 
-    /* Penyesuaian form input khusus mobile agar tombol panah tidak meluber */
     [data-testid="stForm"] {
-        padding: 4px 5px 4px 12px !important; 
+        padding: 6px 6px 6px 12px !important;
+    }
+
+    [data-testid="stForm"] div[data-testid="column"]:first-child {
+        flex: 1 1 auto !important;
     }
 
     [data-testid="stForm"] div[data-testid="column"]:last-child {
@@ -1148,12 +1161,15 @@ div[data-testid="stTextInput"] input {
 
     .stTextInput > div > div > input {
         height: 38px !important;
+        font-size: 13px !important;
     }
 
     .stForm button {
         height: 36px !important;
         width: 36px !important;
         min-width: 36px !important;
+        font-size: 16px !important;
+        margin: 0 !important;
     }
 
     .splash-screen {
