@@ -770,108 +770,80 @@ input {
 }
 
 /* ======================================================
-   INPUT CHAT MODERN RESPONSIVE WITH FLEXBOX
+   INPUT CHAT MODERN RESPONSIVE (OPTIMIZED)
 ====================================================== */
 .input-box {
     margin-top: 10px;
     background: transparent;
     width: 100% !important;
-    max-width: 100% !important;
+    padding: 0 10px 10px 10px;
     box-sizing: border-box !important;
 }
 
 [data-testid="stForm"] {
     background: #ffffff !important;
     border: none !important;
-    padding: 6px 10px !important;
+    padding: 6px 12px !important;
     border-radius: 999px !important;
-    box-shadow: 0 8px 22px rgba(0,0,0,.08) !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
     width: 100% !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
     box-sizing: border-box !important;
 }
 
+/* Memastikan blok di dalam form rapi */
 [data-testid="stForm"] div[data-testid="stHorizontalBlock"] {
     display: flex !important;
     flex-direction: row !important;
-    flex-wrap: nowrap !important;
+    flex-wrap: nowrap !important; /* Biarkan nowrap hanya jika yakin lebar layar cukup */
     align-items: center !important;
-    justify-content: space-between !important;
-    gap: 6px !important;
+    gap: 8px !important;
     width: 100% !important;
 }
 
+/* Kolom input */
 [data-testid="stForm"] div[data-testid="column"]:first-child {
     flex: 1 1 auto !important;
     min-width: 0 !important;
-    padding: 0 !important;
-    margin: 0 !important;
 }
 
+/* Kolom tombol (Tanda Panah) */
 [data-testid="stForm"] div[data-testid="column"]:last-child {
-    flex: 0 0 44px !important;
-    min-width: 44px !important;
-    max-width: 44px !important;
-    padding: 0 !important;
-    margin: 0 !important;
+    flex: 0 0 40px !important; /* Memperkecil lebar agar lebih pas di HP */
+    max-width: 40px !important;
+    min-width: 40px !important;
     display: flex !important;
     justify-content: center !important;
-    align-items: center !important;
-}
-
-.stTextInput > div {
-    border: none !important;
-    box-shadow: none !important;
-}
-
-.stTextInput > div > div {
-    border: none !important;
-    box-shadow: none !important;
-    background: transparent !important;
 }
 
 .stTextInput > div > div > input {
-    height: 44px !important;
+    height: 45px !important;
     border-radius: 999px !important;
     border: none !important;
     background: #ffffff !important;
-    color: #111 !important;
-    padding-left: 14px !important;
+    padding-left: 15px !important;
     font-size: 14px !important;
     box-shadow: none !important;
     width: 100% !important;
 }
 
-.stTextInput > div > div > input:focus {
-    border: none !important;
-    box-shadow: none !important;
-}
-
-.stTextInput > div > div > input::placeholder {
-    color: #9aa6b2 !important;
-}
-
 .stForm button {
-    height: 40px !important;
-    width: 40px !important;
-    min-width: 40px !important;
+    height: 38px !important;
+    width: 38px !important;
+    min-width: 38px !important;
     border-radius: 50% !important;
     background: #0b4d95 !important;
     color: #ffffff !important;
-    font-size: 18px !important;
+    font-size: 16px !important;
     font-weight: 900 !important;
-    box-shadow: none !important;
     border: none !important;
     padding: 0 !important;
-    line-height: 1 !important;
-    margin: 0 !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-}
-
-.stForm button:hover {
-    background: #0d57a1 !important;
-    color: #ffffff !important;
+    margin: 0 !important;
 }
 
 /* ======================================================
