@@ -36,7 +36,7 @@ INDEX_DIR.mkdir(parents=True, exist_ok=True)
 # =========================================================
 # SESSION
 # =========================================================
-APP_VERSION = "tanya-siberma-clean-input-admin-v70"
+APP_VERSION = "tanya-siberma-clean-input-admin-v71"
 
 if st.session_state.get("_app_version") != APP_VERSION:
     st.session_state.clear()
@@ -339,7 +339,7 @@ def answer_pending_question():
     st.session_state.last_sources = sources
     st.session_state.pending_question = None
     st.rerun()
-    
+
 # =========================================================
 # CSS
 # =========================================================
@@ -347,7 +347,6 @@ def load_css():
     st.markdown(
         """
 <style>
-/* HAPUS SEMUA HEADER DAN RUANG KOSONG BAWAAN STREAMLIT */
 #MainMenu {visibility: hidden;}
 footer {visibility: hidden;}
 header[data-testid="stHeader"] {display: none !important;}
@@ -369,10 +368,9 @@ html, body, [class*="css"] {
     background: #eefaff !important;
 }
 
-/* Mengatur container agar mepet atas (menghapus space biru muda di mobile & web) */
 .block-container {
     max-width: 1080px !important;
-    padding: 0px 16px 16px 16px !important;
+    padding: 0px 16px 16px 16px !important; /* Spasi atas 0px */
 }
 
 /* ======================================================
@@ -758,7 +756,7 @@ html, body, [class*="css"] {
 [data-testid="stForm"] {
     background: #ffffff !important;
     border: 1px solid #e0e0e0 !important;
-    padding: 5px 6px 5px 15px !important; /* Padding kanan dibuat kecil agar tombol mepet */
+    padding: 5px 6px 5px 15px !important;
     border-radius: 999px !important;
     box-shadow: 0 8px 22px rgba(0,0,0,.05) !important;
     width: 100% !important;
@@ -775,7 +773,6 @@ html, body, [class*="css"] {
     width: 100% !important;
 }
 
-/* Kolom Kiri: Input Teks */
 [data-testid="stForm"] div[data-testid="column"]:first-child {
     flex: 1 1 auto !important;
     min-width: 0 !important;
@@ -783,33 +780,22 @@ html, body, [class*="css"] {
     margin: 0 !important;
 }
 
-/* Kolom Kanan: Tombol Panah (Ukuran Fix, Mepet Kanan) */
 [data-testid="stForm"] div[data-testid="column"]:last-child {
-    flex: 0 0 42px !important; 
-    width: 42px !important;
-    min-width: 42px !important;
+    flex: 0 0 42px !important;
     max-width: 42px !important;
+    min-width: 42px !important;
     padding: 0 !important;
     margin: 0 !important;
     display: flex !important;
-    justify-content: flex-end !important;
+    justify-content: flex-end !important; 
     align-items: center !important;
-}
-
-/* Membersihkan Background Input Teks */
-.stTextInput,
-.stTextInput > div,
-.stTextInput > div > div {
-    border: none !important;
-    box-shadow: none !important;
-    background: transparent !important;
 }
 
 .stTextInput > div > div > input {
     height: 42px !important;
     border-radius: 999px !important;
     border: none !important;
-    background: transparent !important; 
+    background: transparent !important;
     color: #111 !important;
     padding: 0 !important;
     font-size: 14px !important;
@@ -827,7 +813,6 @@ html, body, [class*="css"] {
     color: #9aa6b2 !important;
 }
 
-/* Desain Tombol Panah */
 .stForm button {
     height: 40px !important;
     width: 40px !important;
@@ -1011,18 +996,15 @@ div[data-testid="stTextInput"] input {
         width: 100% !important;
     }
 
-    /* MENGHILANGKAN SPACE BIRU MUDA DI ATAS KETIKA DI HP */
     .main .block-container {
         margin: 0 !important;
-        padding: 0 !important;
+        padding: 0px 10px 10px 10px !important; 
         max-width: 100% !important;
         width: 100% !important;
-        padding-top: 0 !important; 
     }
 
     .stApp {
         background: #bfeaff !important;
-        margin-top: 0 !important;
     }
 
     .topbar {
@@ -1138,7 +1120,6 @@ div[data-testid="stTextInput"] input {
         width: 26px !important;
     }
 
-    /* Penyesuaian form input khusus mobile */
     .input-box {
         background: #bfeaff;
         padding: 0 10px 12px 10px;
@@ -1146,11 +1127,7 @@ div[data-testid="stTextInput"] input {
     }
 
     [data-testid="stForm"] {
-        padding: 6px 6px 6px 12px !important;
-    }
-
-    [data-testid="stForm"] div[data-testid="column"]:first-child {
-        flex: 1 1 auto !important;
+        padding: 4px 5px 4px 12px !important; 
     }
 
     [data-testid="stForm"] div[data-testid="column"]:last-child {
@@ -1161,15 +1138,12 @@ div[data-testid="stTextInput"] input {
 
     .stTextInput > div > div > input {
         height: 38px !important;
-        font-size: 13px !important;
     }
 
     .stForm button {
         height: 36px !important;
         width: 36px !important;
         min-width: 36px !important;
-        font-size: 16px !important;
-        margin: 0 !important;
     }
 
     .splash-screen {
