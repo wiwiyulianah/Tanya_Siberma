@@ -770,54 +770,55 @@ input {
 }
 
 /* ======================================================
-   INPUT CHAT MODERN RESPONSIVE (OPTIMIZED)
+   INPUT CHAT MODERN RESPONSIVE - FIXED
 ====================================================== */
 .input-box {
     margin-top: 10px;
-    background: transparent;
     width: 100% !important;
-    padding: 0 10px 10px 10px;
+    padding: 0 10px 15px 10px;
     box-sizing: border-box !important;
 }
 
-/* Hapus semua spasi dan border bawaan Streamlit pada input */
 [data-testid="stForm"] {
     background: #ffffff !important;
-    border: none !important;
-    padding: 0px 8px !important; /* Perkecil padding */
+    border: 1px solid #dcdcdc !important;
+    padding: 5px 5px 5px 15px !important;
     border-radius: 999px !important;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
-    margin: 0 !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05) !important;
     display: flex !important;
     align-items: center !important;
+    width: 100% !important;
 }
 
-/* Mematikan background bawaan input field */
-.stTextInput > div > div {
-    background: transparent !important;
-    border: none !important;
-}
-
-/* Memastikan input field benar-benar bersih */
+/* Memastikan teks input berwarna hitam dan terlihat jelas */
 .stTextInput > div > div > input {
-    background: transparent !important;
+    color: #333333 !important;
+    background-color: transparent !important;
     border: none !important;
-    box-shadow: none !important;
+    font-size: 15px !important;
     height: 45px !important;
-    padding-left: 20px !important;
 }
 
-/* Menghilangkan ring biru saat klik input */
-.stTextInput > div > div > input:focus {
-    outline: none !important;
+/* Placeholder tetap terlihat jelas */
+.stTextInput > div > div > input::placeholder {
+    color: #888888 !important;
+}
+
+/* Tombol kirim bulat sempurna */
+.stForm button {
+    height: 40px !important;
+    width: 40px !important;
+    border-radius: 50% !important;
+    background: #0b4d95 !important;
+    color: white !important;
+    font-size: 16px !important;
     border: none !important;
-    box-shadow: none !important;
-}
-
-/* Mengatur kolom agar tombol panah tidak terdesak */
-[data-testid="stForm"] div[data-testid="column"] {
     padding: 0 !important;
-    margin: 0 !important;
+    margin-left: 10px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
 }
 
 /* ======================================================
