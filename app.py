@@ -770,55 +770,108 @@ input {
 }
 
 /* ======================================================
-   INPUT CHAT MODERN RESPONSIVE - FIXED
+   INPUT CHAT MODERN RESPONSIVE WITH FLEXBOX
 ====================================================== */
 .input-box {
     margin-top: 10px;
+    background: transparent;
     width: 100% !important;
-    padding: 0 10px 15px 10px;
+    max-width: 100% !important;
     box-sizing: border-box !important;
 }
 
 [data-testid="stForm"] {
     background: #ffffff !important;
-    border: 1px solid #dcdcdc !important;
-    padding: 5px 5px 5px 15px !important;
+    border: none !important;
+    padding: 6px 10px !important;
     border-radius: 999px !important;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05) !important;
+    box-shadow: 0 8px 22px rgba(0,0,0,.08) !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+[data-testid="stForm"] div[data-testid="stHorizontalBlock"] {
     display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
     align-items: center !important;
+    justify-content: space-between !important;
+    gap: 6px !important;
     width: 100% !important;
 }
 
-/* Memastikan teks input berwarna hitam dan terlihat jelas */
-.stTextInput > div > div > input {
-    color: #333333 !important;
-    background-color: transparent !important;
+[data-testid="stForm"] div[data-testid="column"]:first-child {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+[data-testid="stForm"] div[data-testid="column"]:last-child {
+    flex: 0 0 44px !important;
+    min-width: 44px !important;
+    max-width: 44px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.stTextInput > div {
     border: none !important;
-    font-size: 15px !important;
-    height: 45px !important;
+    box-shadow: none !important;
 }
 
-/* Placeholder tetap terlihat jelas */
+.stTextInput > div > div {
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+}
+
+.stTextInput > div > div > input {
+    height: 44px !important;
+    border-radius: 999px !important;
+    border: none !important;
+    background: #ffffff !important;
+    color: #111 !important;
+    padding-left: 14px !important;
+    font-size: 14px !important;
+    box-shadow: none !important;
+    width: 100% !important;
+}
+
+.stTextInput > div > div > input:focus {
+    border: none !important;
+    box-shadow: none !important;
+}
+
 .stTextInput > div > div > input::placeholder {
-    color: #888888 !important;
+    color: #9aa6b2 !important;
 }
 
-/* Tombol kirim bulat sempurna */
 .stForm button {
     height: 40px !important;
     width: 40px !important;
+    min-width: 40px !important;
     border-radius: 50% !important;
     background: #0b4d95 !important;
-    color: white !important;
-    font-size: 16px !important;
+    color: #ffffff !important;
+    font-size: 18px !important;
+    font-weight: 900 !important;
+    box-shadow: none !important;
     border: none !important;
     padding: 0 !important;
-    margin-left: 10px !important;
+    line-height: 1 !important;
+    margin: 0 !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    flex-shrink: 0 !important;
+}
+
+.stForm button:hover {
+    background: #0d57a1 !important;
+    color: #ffffff !important;
 }
 
 /* ======================================================
