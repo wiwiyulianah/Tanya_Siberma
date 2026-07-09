@@ -780,69 +780,43 @@ input {
     box-sizing: border-box !important;
 }
 
+/* Hapus semua spasi dan border bawaan Streamlit pada input */
 [data-testid="stForm"] {
     background: #ffffff !important;
     border: none !important;
-    padding: 6px 12px !important;
+    padding: 0px 8px !important; /* Perkecil padding */
     border-radius: 999px !important;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
-    width: 100% !important;
+    margin: 0 !important;
     display: flex !important;
-    flex-direction: row !important;
     align-items: center !important;
-    box-sizing: border-box !important;
 }
 
-/* Memastikan blok di dalam form rapi */
-[data-testid="stForm"] div[data-testid="stHorizontalBlock"] {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important; /* Biarkan nowrap hanya jika yakin lebar layar cukup */
-    align-items: center !important;
-    gap: 8px !important;
-    width: 100% !important;
+/* Mematikan background bawaan input field */
+.stTextInput > div > div {
+    background: transparent !important;
+    border: none !important;
 }
 
-/* Kolom input */
-[data-testid="stForm"] div[data-testid="column"]:first-child {
-    flex: 1 1 auto !important;
-    min-width: 0 !important;
-}
-
-/* Kolom tombol (Tanda Panah) */
-[data-testid="stForm"] div[data-testid="column"]:last-child {
-    flex: 0 0 40px !important; /* Memperkecil lebar agar lebih pas di HP */
-    max-width: 40px !important;
-    min-width: 40px !important;
-    display: flex !important;
-    justify-content: center !important;
-}
-
+/* Memastikan input field benar-benar bersih */
 .stTextInput > div > div > input {
-    height: 45px !important;
-    border-radius: 999px !important;
+    background: transparent !important;
     border: none !important;
-    background: #ffffff !important;
-    padding-left: 15px !important;
-    font-size: 14px !important;
     box-shadow: none !important;
-    width: 100% !important;
+    height: 45px !important;
+    padding-left: 20px !important;
 }
 
-.stForm button {
-    height: 38px !important;
-    width: 38px !important;
-    min-width: 38px !important;
-    border-radius: 50% !important;
-    background: #0b4d95 !important;
-    color: #ffffff !important;
-    font-size: 16px !important;
-    font-weight: 900 !important;
+/* Menghilangkan ring biru saat klik input */
+.stTextInput > div > div > input:focus {
+    outline: none !important;
     border: none !important;
+    box-shadow: none !important;
+}
+
+/* Mengatur kolom agar tombol panah tidak terdesak */
+[data-testid="stForm"] div[data-testid="column"] {
     padding: 0 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
     margin: 0 !important;
 }
 
