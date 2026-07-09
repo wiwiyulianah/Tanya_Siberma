@@ -753,14 +753,17 @@ html, body, [class*="css"] {
     box-sizing: border-box !important;
 }
 
+/* Kotak putih luar form - warna dijamin putih bersih */
 [data-testid="stForm"] {
     background: #ffffff !important;
     border: 1px solid #e0e0e0 !important;
-    padding: 5px 6px 5px 15px !important;
+    padding: 2px 2px 2px 15px !important; /* Padding kanan dibuat sangat kecil (2px) agar tombol mepet ke ujung */
     border-radius: 999px !important;
-    box-shadow: 0 8px 22px rgba(0,0,0,.05) !important;
+    box-shadow: none !important;
     width: 100% !important;
     box-sizing: border-box !important;
+    display: flex !important;
+    align-items: center !important;
 }
 
 [data-testid="stForm"] div[data-testid="stHorizontalBlock"] {
@@ -773,67 +776,47 @@ html, body, [class*="css"] {
     width: 100% !important;
 }
 
+/* Kolom Kiri: Input Teks - background putih bersih */
 [data-testid="stForm"] div[data-testid="column"]:first-child {
     flex: 1 1 auto !important;
-    min-width: 0 !important;
     padding: 0 !important;
     margin: 0 !important;
 }
 
+/* Kolom Kanan: Tombol Panah - dibuat mepet ke sisi paling kanan */
 [data-testid="stForm"] div[data-testid="column"]:last-child {
-    flex: 0 0 42px !important;
-    max-width: 42px !important;
-    min-width: 42px !important;
+    flex: 0 0 42px !important; 
+    width: 42px !important;
     padding: 0 !important;
     margin: 0 !important;
     display: flex !important;
-    justify-content: flex-end !important; 
-    align-items: center !important;
+    justify-content: flex-end !important; /* Memaksa tombol ke ujung kanan */
 }
 
+/* Input teks Streamlit - memastikan tidak ada background biru */
 .stTextInput > div > div > input {
-    height: 42px !important;
-    border-radius: 999px !important;
+    height: 40px !important;
     border: none !important;
-    background: transparent !important;
+    background: #ffffff !important; /* Putih bersih */
     color: #111 !important;
-    padding: 0 !important;
+    padding: 0 10px !important;
     font-size: 14px !important;
     box-shadow: none !important;
-    width: 100% !important;
 }
 
-.stTextInput > div > div > input:focus {
-    border: none !important;
-    box-shadow: none !important;
-    background: transparent !important;
-}
-
-.stTextInput > div > div > input::placeholder {
-    color: #9aa6b2 !important;
-}
-
+/* Desain Tombol Panah */
 .stForm button {
-    height: 40px !important;
-    width: 40px !important;
-    min-width: 40px !important;
+    height: 38px !important;
+    width: 38px !important;
     border-radius: 50% !important;
     background: #0b4d95 !important;
     color: #ffffff !important;
-    font-size: 18px !important;
-    font-weight: 900 !important;
-    box-shadow: none !important;
+    font-size: 16px !important;
     border: none !important;
-    padding: 0 !important;
     margin: 0 !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-}
-
-.stForm button:hover {
-    background: #0d57a1 !important;
-    color: #ffffff !important;
 }
 
 /* ======================================================
