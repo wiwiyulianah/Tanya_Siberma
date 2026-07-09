@@ -347,6 +347,7 @@ def load_css():
     st.markdown(
         """
 <style>
+/* HAPUS SEMUA HEADER DAN RUANG KOSONG BAWAAN STREAMLIT (Sesuai Kriteria 2) */
 #MainMenu {visibility: hidden;}
 footer {visibility: hidden;}
 header[data-testid="stHeader"] {display: none !important;}
@@ -368,6 +369,7 @@ html, body, [class*="css"] {
     background: #eefaff !important;
 }
 
+/* Mengatur container agar mepet atas (menghapus space biru muda di mobile & web) */
 .block-container {
     max-width: 1080px !important;
     padding: 0px 16px 16px 16px !important; /* Spasi atas 0px */
@@ -743,7 +745,7 @@ html, body, [class*="css"] {
 }
 
 /* ======================================================
-   INPUT CHAT MODERN RESPONSIVE WITH FLEXBOX
+   INPUT CHAT MODERN RESPONSIVE WITH FLEXBOX (Sesuai Kriteria 3 & 4)
 ====================================================== */
 .input-box {
     margin-top: 10px;
@@ -753,70 +755,93 @@ html, body, [class*="css"] {
     box-sizing: border-box !important;
 }
 
-/* Kotak putih luar form - warna dijamin putih bersih */
+/* Kotak putih luar form */
 [data-testid="stForm"] {
     background: #ffffff !important;
     border: 1px solid #e0e0e0 !important;
-    padding: 2px 2px 2px 15px !important; /* Padding kanan dibuat sangat kecil (2px) agar tombol mepet ke ujung */
+    padding: 5px 6px 5px 15px !important; /* Mencegah tombol keluar garis (Kriteria 4) */
     border-radius: 999px !important;
-    box-shadow: none !important;
+    box-shadow: 0 8px 22px rgba(0,0,0,.05) !important;
     width: 100% !important;
     box-sizing: border-box !important;
-    display: flex !important;
-    align-items: center !important;
 }
 
+/* Flexbox untuk menghilangkan gap dan menata letak */
 [data-testid="stForm"] div[data-testid="stHorizontalBlock"] {
     display: flex !important;
     flex-direction: row !important;
     flex-wrap: nowrap !important;
     align-items: center !important;
     justify-content: space-between !important;
-    gap: 0px !important;
+    gap: 0px !important; /* Menghilangkan gap bawaan (Kriteria 3) */
     width: 100% !important;
 }
 
-/* Kolom Kiri: Input Teks - background putih bersih */
+/* Kolom Kiri: Input Teks (Dibuat auto stretch) */
 [data-testid="stForm"] div[data-testid="column"]:first-child {
-    flex: 1 1 auto !important;
+    flex: 1 1 auto !important; /* (Kriteria 3) */
+    min-width: 0 !important;
     padding: 0 !important;
     margin: 0 !important;
 }
 
-/* Kolom Kanan: Tombol Panah - dibuat mepet ke sisi paling kanan */
+/* Kolom Kanan: Tombol Panah (Ukuran Fix, Mepet Kanan) */
 [data-testid="stForm"] div[data-testid="column"]:last-child {
-    flex: 0 0 42px !important; 
-    width: 42px !important;
+    flex: 0 0 42px !important; /* (Kriteria 3) */
+    max-width: 42px !important; /* (Kriteria 3) */
+    min-width: 42px !important;
     padding: 0 !important;
     margin: 0 !important;
     display: flex !important;
-    justify-content: flex-end !important; /* Memaksa tombol ke ujung kanan */
+    justify-content: flex-end !important; /* Mepet Kanan */
+    align-items: center !important;
 }
 
-/* Input teks Streamlit - memastikan tidak ada background biru */
+/* Input teks Streamlit dibersihkan agar putih murni */
 .stTextInput > div > div > input {
-    height: 40px !important;
+    height: 42px !important;
+    border-radius: 999px !important;
     border: none !important;
-    background: #ffffff !important; /* Putih bersih */
+    background: transparent !important;
     color: #111 !important;
-    padding: 0 10px !important;
+    padding: 0 !important;
     font-size: 14px !important;
     box-shadow: none !important;
+    width: 100% !important;
+}
+
+.stTextInput > div > div > input:focus {
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+}
+
+.stTextInput > div > div > input::placeholder {
+    color: #9aa6b2 !important;
 }
 
 /* Desain Tombol Panah */
 .stForm button {
-    height: 38px !important;
-    width: 38px !important;
+    height: 40px !important;
+    width: 40px !important;
+    min-width: 40px !important;
     border-radius: 50% !important;
     background: #0b4d95 !important;
     color: #ffffff !important;
-    font-size: 16px !important;
+    font-size: 18px !important;
+    font-weight: 900 !important;
+    box-shadow: none !important;
     border: none !important;
+    padding: 0 !important;
     margin: 0 !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
+}
+
+.stForm button:hover {
+    background: #0d57a1 !important;
+    color: #ffffff !important;
 }
 
 /* ======================================================
@@ -970,7 +995,7 @@ div[data-testid="stTextInput"] input {
     margin-top: 10px;
 }
 
-/* MOBILE RESPONSIVE FIXES */
+/* MOBILE RESPONSIVE FIXES (Sesuai Kriteria 1) */
 @media (max-width: 768px) {
     html, body, .stApp, [data-testid="stAppViewContainer"], [data-testid="stMainBlockContainer"], .main {
         margin: 0 !important;
@@ -979,9 +1004,10 @@ div[data-testid="stTextInput"] input {
         width: 100% !important;
     }
 
+    /* MENGHILANGKAN SPACE BIRU MUDA DI ATAS KETIKA DI HP */
     .main .block-container {
         margin: 0 !important;
-        padding: 0px 10px 10px 10px !important; 
+        padding: 0px 10px 10px 10px !important; /* Padding atas wajib 0px agar nempel ke atas */
         max-width: 100% !important;
         width: 100% !important;
     }
@@ -1109,6 +1135,7 @@ div[data-testid="stTextInput"] input {
         margin-top: 0;
     }
 
+    /* Penyesuaian form input khusus mobile agar tombol panah tidak meluber */
     [data-testid="stForm"] {
         padding: 4px 5px 4px 12px !important; 
     }
